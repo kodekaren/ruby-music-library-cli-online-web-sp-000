@@ -15,6 +15,7 @@ def call
   puts "To play a song, enter 'play song'."
   puts "To quit, type 'exit'."
   puts "What would you like to do?"
+<<<<<<< HEAD
 
   answer = ""
 while answer != "exit"
@@ -36,6 +37,13 @@ while answer != "exit"
 end
 end
 
+=======
+  answer = gets
+  if answer != "exit"
+     call
+ end
+ end
+>>>>>>> 27b36d704c5a056acf4896d1ed1fce6958341862
 
  def list_songs
    Song.all.sort{ |a, b| a.name <=> b.name }.each.with_index do |s, i|
@@ -51,6 +59,39 @@ def list_genres
    Artist.all.sort{ |a, b| a.name <=> b.name }.each.with_index do |a, i|
    puts "#{i+1}. #{a.name}"
  end
+<<<<<<< HEAD
+=======
+end
+def list_songs_by_artist
+    puts "Please enter the name of an artist:"
+    input = gets.strip
+    Artist.all.each do |artist_object|
+      if artist_object.name == input
+        artist_object.songs.sort_by{|song_object| song_object.name}.each_with_index do |song_obj,index|
+          puts "#{index + 1}. #{song_obj.name} - #{song_obj.genre.name}"
+        end
+      end
+    end
+  end
+def list_songs_by_genre
+   puts "Please enter the name of a genre:"
+   input = gets.chomp
+   Genre.all.each do |genre_object|
+     if genre_object.name == input
+       genre_object.songs.sort_by{|song_object| song_object.name}.each_with_index do |song_object,index|
+         puts "#{index + 1}. #{song_object.artist.name} - #{song_object.name}"
+       end
+     end
+   end
+ end
+
+def play_song
+  puts "Which song number would you like to play?"
+  number = gets.chomp
+  if Song.all.include?(number)
+    number.play_song
+end
+>>>>>>> 27b36d704c5a056acf4896d1ed1fce6958341862
 end
 def list_songs_by_artist
     puts "Please enter the name of an artist:"
